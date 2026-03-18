@@ -1,0 +1,9 @@
+1. Explain what FastAPI is and why it's popular for building APIs.
+
+2. Write a short poem about artificial intelligence.
+
+3. What are the main differences between Python and JavaScript?
+
+4. Describe the concept of async/await in Python in simple terms.
+
+5. Generate a creative name for a coffee shop that specializes in cold brew.

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "module4-document-ingestion"
+version = "0.1.0"
+description = "Module 4: Document Ingestion - Loading and chunking documents with LlamaIndex"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "llama-index>=0.9.0",
+    "llama-index-llms-ollama>=0.1.0",
+    "llama-index-embeddings-ollama>=0.1.0",
+    "pypdf>=3.17.0",
+    "pdfplumber>=0.10.0",
+    "python-multipart>=0.0.6",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "httpx>=0.25.0",
+]

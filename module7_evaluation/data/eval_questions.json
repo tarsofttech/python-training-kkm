@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": "How many days of annual leave are employees entitled to per year?",
+    "expected_answer": "Employees are entitled to 14 days of annual leave per calendar year.",
+    "source_doc": "hr_leave_policy.txt"
+  },
+  {
+    "id": 2,
+    "question": "Can unused annual leave be carried forward to the next year?",
+    "expected_answer": "Yes, unused annual leave may be carried forward to the next calendar year, subject to a maximum accumulation of 28 days.",
+    "source_doc": "hr_leave_policy.txt"
+  },
+  {
+    "id": 3,
+    "question": "How many weeks of maternity leave are female employees entitled to?",
+    "expected_answer": "Female employees are entitled to 16 weeks of paid maternity leave.",
+    "source_doc": "hr_leave_policy.txt"
+  },
+  {
+    "id": 4,
+    "question": "What is the company's dress code policy?",
+    "expected_answer": "Business casual attire is the standard for office-based employees.",
+    "source_doc": "hr_code_of_conduct.txt"
+  },
+  {
+    "id": 5,
+    "question": "Is harassment tolerated in the workplace?",
+    "expected_answer": "No, harassment, discrimination, or bullying of any kind will not be tolerated.",
+    "source_doc": "hr_code_of_conduct.txt"
+  },
+  {
+    "id": 6,
+    "question": "What should employees do if they witness a violation of the Code of Conduct?",
+    "expected_answer": "Employees who become aware of violations have a duty to report them to their supervisor, Human Resources, or through the company's confidential ethics hotline.",
+    "source_doc": "hr_code_of_conduct.txt"
+  },
+  {
+    "id": 7,
+    "question": "What are the minimum password requirements?",
+    "expected_answer": "Passwords must be at least 12 characters long and include a combination of uppercase letters, lowercase letters, numbers, and special characters.",
+    "source_doc": "it_security_policy.txt"
+  },
+  {
+    "id": 8,
+    "question": "How often must passwords for critical systems be changed?",
+    "expected_answer": "Passwords for critical systems must be changed every 90 days.",
+    "source_doc": "it_security_policy.txt"
+  },
+  {
+    "id": 9,
+    "question": "What should an employee do if their device is lost or stolen?",
+    "expected_answer": "Any lost or stolen device containing company data must be reported to IT Security immediately, regardless of the time of day.",
+    "source_doc": "it_security_policy.txt"
+  },
+  {
+    "id": 10,
+    "question": "Is using public Wi-Fi networks allowed for accessing company resources?",
+    "expected_answer": "Use of public Wi-Fi networks for accessing company resources is permitted only through the company VPN.",
+    "source_doc": "it_security_policy.txt"
+  }
+]
