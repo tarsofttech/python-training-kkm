@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 from models.show import Show
+from models.addition import Addition
 
 app = FastAPI()
 
@@ -17,6 +18,12 @@ async def test():
 def show_value(item: Show):
     return {
         "message": f"Name: {item.name}, Value: {item.value}"
+    }
+
+@app.post("/addition")
+def addition(item: Addition):
+    return {
+        "message": f"Addition: {item.a} + {item.b} = {item.a + item.b}"
     }
 
 
