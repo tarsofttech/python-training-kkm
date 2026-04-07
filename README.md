@@ -54,11 +54,49 @@ A production-ready FastAPI CRUD application with SQLAlchemy, MySQL, Alembic migr
    - Interactive docs: http://localhost:8000/docs
    - Health check: http://localhost:8000/health
 
+## Authentication
+
+All CRUD endpoints require JWT authentication.
+
+### 1. Get Access Token
+```bash
+curl -X POST "http://localhost:8000/auth/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=testuser&password=testpass"
+```
+
+Response:
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "bearer"
+}
+```
+
+### 2. Use Token in Requests
+Add the Authorization header to all CRUD requests:
+```bash
+curl "http://localhost:8000/items/" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+```
+
+### 3. Verify Current User
+```bash
+curl -H "Authorization: Bearer your-token" http://localhost:8000/auth/me
+```
+
 ## CRUD Endpoints
 
 ### 1. Create Item (POST /items/)
 ```bash
+# First get token
+TOKEN=$(curl -s -X POST "http://localhost:8000/auth/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=testuser&password=testpass" | jq -r '.access_token')
+
+# Create item with token
 curl -X POST "http://localhost:8000/items/" \
+  -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Laptop",
@@ -69,22 +107,42 @@ curl -X POST "http://localhost:8000/items/" \
 
 ### 2. List Items (GET /items/)
 ```bash
-curl "http://localhost:8000/items/?skip=0&limit=10"
+# Get token first
+TOKEN=$(curl -s -X POST "http://localhost:8000/auth/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=testuser&password=testpass" | jq -r '.access_token')
+
+# List items
+curl "http://localhost:8000/items/?skip=0&limit=10" \
+  -H "Authorization: Bearer $TOKEN"
 ```
 
 Search items:
 ```bash
-curl "http://localhost:8000/items/?q=laptop&skip=0&limit=10"
+curl "http://localhost:8000/items/?q=laptop&skip=0&limit=10" \
+  -H "Authorization: Bearer $TOKEN"
 ```
 
 ### 3. Get Single Item (GET /items/{item_id})
 ```bash
-curl "http://localhost:8000/items/1"
+# Get token first
+TOKEN=$(curl -s -X POST "http://localhost:8000/auth/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=testuser&password=testpass" | jq -r '.access_token')
+
+curl "http://localhost:8000/items/1" \
+  -H "Authorization: Bearer $TOKEN"
 ```
 
 ### 4. Update Item (PUT /items/{item_id})
 ```bash
+# Get token first
+TOKEN=$(curl -s -X POST "http://localhost:8000/auth/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=testuser&password=testpass" | jq -r '.access_token')
+
 curl -X PUT "http://localhost:8000/items/1" \
+  -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Gaming Laptop",
@@ -94,7 +152,13 @@ curl -X PUT "http://localhost:8000/items/1" \
 
 ### 5. Delete Item (DELETE /items/{item_id})
 ```bash
-curl -X DELETE "http://localhost:8000/items/1"
+# Get token first
+TOKEN=$(curl -s -X POST "http://localhost:8000/auth/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=testuser&password=testpass" | jq -r '.access_token')
+
+curl -X DELETE "http://localhost:8000/items/1" \
+  -H "Authorization: Bearer $TOKEN"
 ```
 
 ## Features
