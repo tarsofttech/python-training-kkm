@@ -24,7 +24,7 @@ def list_items(
     db: Session = Depends(get_db),
 ) -> dict:
     items, total = crud_item.get_items(db, skip=pagination.skip, limit=pagination.limit, q=q)
-    return {"total": total, "items": items}
+    return {"total": total, "items": [ItemResponse.model_validate(item) for item in items]}
 
 
 @router.get("/{item_id}", response_model=ItemResponse)
