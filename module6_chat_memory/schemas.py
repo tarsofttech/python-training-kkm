@@ -100,6 +100,14 @@ class QueryResponse(BaseModel):
     )
 
 
+class DebugQueryResponse(QueryResponse):
+    """Extended response model for debug query endpoint."""
+    augmented_prompt: str = Field(
+        ...,
+        description="The full prompt sent to the LLM including retrieved context"
+    )
+
+
 class IngestResponse(BaseModel):
     """Response model for document ingestion endpoint."""
     status: str = Field(..., description="Ingestion status")

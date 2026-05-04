@@ -111,3 +111,7 @@ async def get_status():
         model=rag_engine.model_name,
         node_count=rag_engine.get_node_count() if rag_engine.is_ready() else 0
     )
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8004, reload=True)
